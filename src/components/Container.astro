@@ -1,0 +1,10 @@
+---
+type Props = {
+  class?: string;
+}
+
+let props = Astro.props;
+---
+<div class={`${props.class} flex max-w-7xl mx-auto`}>
+  <slot />
+</div>
