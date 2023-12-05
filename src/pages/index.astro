@@ -1,23 +1,37 @@
 ---
 import Container from '../components/Container.astro';
 import Layout from '../layouts/Layout.astro';
+
+const api = 'https://api.github.com/repos/zaadevofc/pikiran.vercel.app/issues/1/comments';
+const options = { headers: { Authorization: `Bearer ${import.meta.env.GH_TOKEN}` } };
+
+let fetching = await fetch(api, options)
+let all = await fetching.json()
+let quote = all[Math.floor(Math.random() * all.length)];
+quote.body = quote.body.replace(/"/g, '').trim();
 ---
 
 <Layout title="Pikiran">
-	<Container class='text-white flex justify-center items-center min-h-screen p-8'>
+	<Container class='text-white flex justify-center items-center min-h-screen p-8 md:px-16 relative'>
         <div class="flex flex-col items-end">
-            <h1 class="font-[Poppins] tracking-wide text-[50px] text-left leading-tight">
-                <span class="font-bold text-gray-500 text-6xl">"</span>
-                <span class="text-gray-200">Seseorang yang menjatuhkan mu hari ini, suatu hari pasti akan membutuhkan mu saat itu</span>
-                <span class="font-bold text-gray-500 text-6xl">"</span>
+            <h1 class="font-[Poppins] tracking-wide text-2xl sm:text-3xl md:text-4xl lg:text-[50px] text-left">
+                <span class="font-bold text-gray-500 md:text-5xl lg:text-6xl">"</span>
+                <span class="text-gray-200 leading-tight">{quote?.body}</span>
+                <span class="font-bold text-gray-500 md:text-5xl lg:text-6xl">"</span>
             </h1>
-
             <div class="flex flex-col items-end gap-1 mt-20">
-                <div class="flex flex-row items-center gap-3">
-                    <h1 class="text-2xl">zaadevofc</h1>
-                </div>
+                <a href={quote.html_url} target="_blank" class="flex flex-row items-center gap-3 md:cursor-pointer">
+                    <h1 class="text-xl md:text-2xl">{quote?.user.login}</h1>
+                    <img class="w-5 md:w-6 rounded-full shadow-md shadow-slate-800" src={quote?.user.avatar_url} alt={quote?.user.login}>
+                </a>
                 <span class="w-24 h-1 bg-blue-500"></span>
             </div>
+        </div>
+
+        <div class="absolute bottom-0 p-5 flex flex-row gap-3 items-center text-xs">
+            <a href="https://github.com/zaadevofc/pikiran.vercel.app/issues/1" target="_blank" class="underline underline-offset-4 decoration-wavy text-cyan-500 md:cursor-pointer">
+                Tambah Kata - kata.
+            </a>
         </div>
     </Container>
 </Layout>
