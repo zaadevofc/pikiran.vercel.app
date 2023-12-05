@@ -4,8 +4,8 @@ Buat kata - kata kerenn kalian sendiri [disini](https://github.com/zaadevofc/pik
 kata - kata yang muncul di web secara random adalah hasil semua `issue` pada project ini.
 
 > List semua pikiran orang - orang yang telah di catat di `issue`
-bisa di lihat di url ini : 
 
+bisa di lihat di url ini : 
 [https://pikiran.vercel.app/list](https://pikiran.vercel.app/list)
 
 ### ✨ Support System
