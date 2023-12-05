@@ -6,7 +6,7 @@ kata - kata yang muncul di web secara random adalah hasil semua `issue` pada pro
 ### 📃 List semua pikiran orang - orang yang telah di catat di `issue`
 
 list bisa di lihat di url ini : 
-[https://pikiran.vercel.app/list](https://pikiran.vercel.app/list)
+[https://pikiran.vercel.app/api/list](https://pikiran.vercel.app/api/list)
 
 ### ✨ Support System
 
